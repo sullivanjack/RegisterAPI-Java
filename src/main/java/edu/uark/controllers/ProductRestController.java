@@ -65,6 +65,6 @@ public class ProductRestController {
 	@ResponseBody
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test() {
-		return "Successful test. (ProductRestController)";
+		return "Successful test. (ProductRestController) \n  We have located the code! Jack Sullivan was here!";
 	}
 }
