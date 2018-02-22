@@ -8,9 +8,9 @@ import edu.uark.dataaccess.repository.helpers.PostgreFunctionType;
 import edu.uark.dataaccess.repository.helpers.SQLComparisonType;
 import edu.uark.dataaccess.repository.helpers.where.WhereClause;
 import edu.uark.dataaccess.repository.helpers.where.WhereContainer;
-import edu.uark.models.entities.ProductEntity;
-import edu.uark.models.entities.fieldnames.ProductFieldNames;
-import edu.uark.models.repositories.interfaces.ProductRepositoryInterface;
+import edu.uark.models.entities.EmployeeEntity;
+import edu.uark.models.entities.fieldnames.EmployeeFieldNames;
+import edu.uark.models.repositories.interfaces.EmployeeRepositoryInterface;
 
 public class EmployeeRepository extends BaseRepository<EmployeeEntity> implements EmployeeRepositoryInterface {
     @Override
