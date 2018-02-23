@@ -14,39 +14,131 @@ import edu.uark.models.entities.fieldnames.EmployeeFieldNames;
 public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     @Override
     protected void fillFromRecord(ResultSet rs) throws SQLException {
-        this.lookupCode = rs.getString(EmployeeFieldNames.LOOKUP_CODE);
-        this.count = rs.getInt(EmployeeFieldNames.COUNT);
+        this.recordId = rs.getInt(EmployeeFieldNames.RECORD_ID);
+        this.firstName = rs.getString(EmployeeFieldNames.FIRSTNAME);
+        this.lastName = rs.getString(EmployeeFieldNames.LASTNAME);
+        this.empID = rs.getInt(EmployeeFieldNames.EMP_ID);
+        this.active = rs.getString(EmployeeFieldNames.ACTIVE);
+        this.role = rs.getString(EmployeeFieldNames.ROLE);
+        this.manager = rs.getString(EmployeeFieldNames.MANAGER);
+        this.password = rs.getString(EmployeeFieldNames.PASSWORD);
     }
 
     @Override
     protected Map<String, Object> fillRecord(Map<String, Object> record) {
         record.put(EmployeeFieldNames.LOOKUP_CODE, this.lookupCode);
         record.put(EmployeeFieldNames.COUNT, this.count);
+        record.put(EmployeeFieldNames.RECORD_ID, this.recordId);
+        record.put(EmployeeFieldNames.FIRSTNAME, this.firstName);
+        record.put(EmployeeFieldNames.LASTNAME, this.lastName);
+        record.put(EmployeeFieldNames.EMP_ID, this.empID);
+        record.put(EmployeeFieldNames.ACTIVE, this.active);
+        record.put(EmployeeFieldNames.ROLE, this.role);
+        record.put(EmployeeFieldNames.MANAGER, this.manager);
+        record.put(EmployeeFieldNames.PASSWORD, this.password);
 
         return record;
     }
 
-    private String lookupCode;
-    public String getLookupCode() {
-        return this.lookupCode;
+    private int recordId;
+    public int getRecordId() {
+        return this.recordId;
     }
-    public EmployeeEntity setLookupCode(String lookupCode) {
-        if (!StringUtils.equals(this.lookupCode, lookupCode)) {
-            this.lookupCode = lookupCode;
-            this.propertyChanged(EmployeeFieldNames.LOOKUP_CODE);
+    public EmployeeEntity setRecordId(int recordId) {
+        if (this.recordId != recordId) {
+            this.recordId = recordId;
+            this.propertyChanged(EmployeeFieldNames.RECORD_ID);
         }
 
         return this;
     }
 
-    private int count;
-    public int getCount() {
-        return this.count;
+    private String firstName;
+    public String getFirstName() {
+        return this.firstName;
     }
-    public EmployeeEntity setCount(int count) {
-        if (this.count != count) {
-            this.count = count;
-            this.propertyChanged(EmployeeFieldNames.COUNT);
+    public EmployeeEntity setFirstName(String firstName) {
+        if (!StringUtils.equals(this.firstName, firstName)) {
+            this.firstName = firstName;
+            this.propertyChanged(EmployeeFieldNames.FIRSTNAME);
+        }
+
+        return this;
+    }
+
+    private String lastName;
+    public String getLastName() {
+        return this.lastName;
+    }
+    public EmployeeEntity setLastName(String lastName) {
+        if (!StringUtils.equals(this.lastName, lastName)) {
+            this.lastName = lastName;
+            this.propertyChanged(EmployeeFieldNames.LASTNAME);
+        }
+
+        return this;
+    }
+
+    private int empID;
+    public int getEmpID() {
+        return this.empID;
+    }
+    public EmployeeEntity setCount(int empID) {
+        if (this.empID != empID) {
+            this.empID = empID;
+            this.propertyChanged(EmployeeFieldNames.EMP_ID);
+        }
+
+        return this;
+    }
+
+    private String active;
+    public String getActive() {
+        return this.lastName;
+    }
+    public EmployeeEntity setActive(String active) {
+        if (this.active != active) {
+            this.active = active;
+            this.propertyChanged(EmployeeFieldNames.ACTIVE);
+        }
+
+        return this;
+    }
+
+    private String role;
+    public String getRole() {
+        return this.role;
+    }
+    public EmployeeEntity setRole (String role) {
+        if (!StringUtils.equals(this.role, role)) {
+            this.role = role;
+            this.propertyChanged(EmployeeFieldNames.ROLE);
+        }
+
+        return this;
+    }
+
+    private String manager;
+    public String getManager() {
+        return this.manager;
+    }
+    public EmployeeEntity setManager (String manager) {
+        if (!StringUtils.equals(this.manager, manager)) {
+            this.manager = manager;
+            this.propertyChanged(EmployeeFieldNames.MANAGER);
+        }
+
+        return this;
+    }
+
+    private String password;
+    public String getPassword() {
+        return this.password;
+    }
+    public EmployeeEntity setPassword (String password) {
+        if (!StringUtils.equals(this.password, password)) {
+            this.password = password;
+            this.propertyChanged(EmployeeFieldNames.PASSWORD);
         }
 
         return this;
@@ -65,14 +157,26 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     public EmployeeEntity() {
         super(DatabaseTable.EMPLOYEE);
 
-        this.count = -1;
-        this.lookupCode = StringUtils.EMPTY;
+        this.recordId = -1;
+        this.firstName = StringUtils.EMPTY;
+        this.lastName = StringUtils.EMPTY;
+        this.empID = -1;
+        this.active = StringUtils.EMPTY;
+        this.role = StringUtils.EMPTY;
+        this.manager = StringUtils.EMPTY;
+        this.password = StringUtils.EMPTY;
     }
 
     public EmployeeEntity(Employee apiEmployee) {
         super(DatabaseTable.EMPLOYEE);
 
-        this.count = apiEmployee.getCount();
-        this.lookupCode = apiEmployee.getLookupCode();
+        this.recordId = apiEmployee.getRecordId();
+        this.firstName = apiEmployee.getFirstName();
+        this.lastName = apiEmployee.getLastName();
+        this.empID = apiEmployee.getEmpId();
+        this.active = apiEmployee.getActive();
+        this.role = apiEmployee.getRole();
+        this.manager = apiEmployee.getManager();
+        this.password = apiEmployee.getPassword();
     }
 }

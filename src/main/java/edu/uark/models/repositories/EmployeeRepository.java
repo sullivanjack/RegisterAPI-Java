@@ -14,18 +14,18 @@ import edu.uark.models.repositories.interfaces.EmployeeRepositoryInterface;
 
 public class EmployeeRepository extends BaseRepository<EmployeeEntity> implements EmployeeRepositoryInterface {
     @Override
-    public EmployeeEntity byLookupCode(String lookupCode) {
+    public EmployeeEntity byRecordId(String recordId) {
         return this.firstOrDefaultWhere(
                 new WhereContainer(
                         (new WhereClause()).
                                 postgreFunction(PostgreFunctionType.LOWER).
                                 table(this.primaryTable).
-                                fieldName(EmployeeFieldNames.LOOKUP_CODE).
+                                fieldName(EmployeeFieldNames.RECORD_ID).
                                 comparison(SQLComparisonType.EQUALS)
                 ),
                 (ps) -> {
                     try {
-                        ps.setObject(1, lookupCode.toLowerCase());
+                        ps.setObject(1, recordId.toLowerCase());
                     } catch (SQLException e) {}
 
                     return ps;

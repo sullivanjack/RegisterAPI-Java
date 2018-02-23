@@ -6,53 +6,90 @@ import java.util.UUID;
 import edu.uark.models.entities.EmployeeEntity;
 
 public class Employee {
-    private UUID id;
-    public UUID getId() {
-        return this.id;
+    /*record id may not be needed from database*/
+    private int recordId;
+    public int getRecordId() {
+        return this.recordId;
     }
-    public Employee setId(UUID id) {
-        this.id = id;
+    public Employee setRecordId(int id) {
+        this.recordId = id;
         return this;
     }
 
-    private String lookupCode;
-    public String getLookupCode() {
-        return this.lookupCode;
+    private String firstName;
+    public String getFirstName() {
+        return this.firstName;
     }
-    public Employee setLookupCode(String lookupCode) {
-        this.lookupCode = lookupCode;
+    public Employee setFirstName(String name) {
+        this.firstName = name;
         return this;
     }
 
-    private int count;
-    public int getCount() {
-        return this.count;
+    private String lastName;
+    public String getLastName() {
+        return this.lastName;
     }
-    public Employee setCount(int count) {
-        this.count = count;
+    public Employee setLastName(String name) {
+        this.lastName = name;
         return this;
     }
 
-    private LocalDateTime createdOn;
-    public LocalDateTime getCreatedOn() {
-        return this.createdOn;
+    private int empId;
+    public int getEmpId() {
+        return this.empId;
     }
-    public Employee setCreatedOn(LocalDateTime createdOn) {
-        this.createdOn = createdOn;
+    public Employee setEmpId(int id) {
+        this.empId = id;
         return this;
+    }
+
+    private String active;
+    public String getActive() { return this.active; }
+    public Employee setEmpID(String active) {
+        this.active = active;
+        return this;
+    }
+
+    private String role;
+    public String getRole() { return this.role; }
+    public Employee setRole(String role){
+        this.role = role;
+        return this;
+    }
+
+    private String manager;
+    public String getManager() { return this.manager; }
+    public Employee setManager(String manager){
+        this.manager = manager;
+        return this;
+    }
+
+    private String password;
+    public String getPassword() { return this.password; }
+    public Employee setPassword(String password) {
+        this.password = password;
+        return password;
     }
 
     public Employee() {
-        this.count = -1;
-        this.lookupCode = "";
-        this.id = new UUID(0, 0);
-        this.createdOn = LocalDateTime.now();
+        this.recordID = -1;
+        this.firstName = "";
+        this.lastName = "";
+        this.empID = -1;
+        this.active = false;
+        this.role = "";
+        this.manager = "";
+        this.password = "";
     }
 
     public Employee(EmployeeEntity employeeEntity) {
-        this.id = employeeEntity.getId();
-        this.count = employeeEntity.getCount();
-        this.createdOn = employeeEntity.getCreatedOn();
-        this.lookupCode = employeeEntity.getLookupCode();
+        this.recordID = employeeEntity.getRecordId();
+        this.firstName = employeeEntity.getFirstName();
+        this.lastName = employeeEntity.getLastName();
+        this.empID = employeeEntity.getEmpId();
+        this.active = employeeEntity.getActive();
+        this.role = employeeEntity.getRole();
+        this.manager = employeeEntity.getManage();
+        this.password = employeeEntity.getPassword();
     }
 }
