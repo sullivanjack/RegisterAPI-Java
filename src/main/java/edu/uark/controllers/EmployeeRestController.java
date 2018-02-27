@@ -1,21 +1,13 @@
 package edu.uark.controllers;
 
-import java.util.List;
-import java.util.UUID;
-
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.uark.commands.employee.EmployeeLogin;
 import edu.uark.commands.products.ProductByLookupCodeQuery;
-import edu.uark.commands.products.ProductCreateCommand;
-import edu.uark.commands.products.ProductDeleteCommand;
-import edu.uark.commands.products.ProductQuery;
-import edu.uark.commands.products.ProductUpdateCommand;
-import edu.uark.commands.products.ProductsQuery;
 import edu.uark.models.api.Employee;
 import edu.uark.models.api.Product;
 
@@ -23,16 +15,10 @@ import edu.uark.models.api.Product;
 @RequestMapping(value = "/api/employee")
 public class EmployeeRestController {
 	
-
-	
-	@RequestMapping(value = "/{productId}", method = RequestMethod.PUT)
-	public Product updateProduct(@PathVariable UUID productId, @RequestBody Product product) {
-		return (new ProductUpdateCommand()).
-			setProductId(productId).
-			setApiProduct(product).
-			execute();
+	@RequestMapping(value = "/byRecordId/{employeeResponseBody}", method = RequestMethod.GET)
+	public Employee employeeLoginCommand (@RequestBody Employee employeeResponseBody) {
+		return (new EmployeeLogin()).setEmp(employeeResponseBody).execute();
 	}
-	
 	
 	@ResponseBody
 	@RequestMapping(value = "/test", method = RequestMethod.GET)

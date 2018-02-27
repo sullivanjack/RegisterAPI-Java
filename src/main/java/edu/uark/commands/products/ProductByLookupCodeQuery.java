@@ -30,6 +30,8 @@ public class ProductByLookupCodeQuery implements ResultCommandInterface<Product>
 	public String getLookupCode() {
 		return this.lookupCode;
 	}
+	
+	
 	public ProductByLookupCodeQuery setLookupCode(String lookupCode) {
 		this.lookupCode = lookupCode;
 		return this;
