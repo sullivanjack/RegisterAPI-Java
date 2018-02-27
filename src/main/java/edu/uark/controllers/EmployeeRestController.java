@@ -22,12 +22,14 @@ public class EmployeeRestController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public Employee test() {
+	public String test() {
 		Employee e = new Employee();
 		e.setEmpId(1);
 		e.setPassword("dog");
 		
-		return (new EmployeeLogin()).setEmp(e).execute();
+		Employee k = (new EmployeeLogin()).setEmp(e).execute();
+		
+		return k.getFirstName() + " " + k.getLastName() + " " + k.getLastName();
 	}
 	
 	
