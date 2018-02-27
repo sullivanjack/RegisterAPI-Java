@@ -1,7 +1,6 @@
 package edu.uark.commands.employee;
 
 import edu.uark.commands.ResultCommandInterface;
-import edu.uark.controllers.exceptions.NotFoundException;
 import edu.uark.controllers.exceptions.UnprocessableEntityException;
 import edu.uark.models.api.Employee;
 import edu.uark.models.entities.EmployeeEntity;

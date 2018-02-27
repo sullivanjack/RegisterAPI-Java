@@ -23,6 +23,7 @@ public class EmployeeRestController {
 	@ResponseBody
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test() {
+		System.out.println("test homie g");
 		Employee e = new Employee();
 		e.setEmpId(1);
 		e.setPassword("dog");
