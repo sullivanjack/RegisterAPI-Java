@@ -21,9 +21,9 @@ public class EmployeeLogin implements ResultCommandInterface<Employee> {
 		if (employeeEntity.getEmpID() == emp.getEmpId() && employeeEntity.getPassword() == emp.getPassword()) {
 			return new Employee(employeeEntity);
 		} else {
-			throw new NotFoundException("Employee execute function");
+			return new Employee().setFirstName("It didn't work");
 		}
-		
+
 	}
 	
 	
