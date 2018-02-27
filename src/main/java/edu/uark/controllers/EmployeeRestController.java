@@ -22,8 +22,12 @@ public class EmployeeRestController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String test() {
-		return "/api/employee/test I have no idea what I am doing still, like still";
+	public Employee test() {
+		Employee e = new Employee();
+		e.setEmpId(1);
+		e.setPassword("dog");
+		
+		return (new EmployeeLogin()).setEmp(e).execute();
 	}
 	
 	

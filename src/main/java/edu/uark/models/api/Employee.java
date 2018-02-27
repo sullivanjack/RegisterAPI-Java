@@ -42,7 +42,7 @@ public class Employee {
 
     private String active;
     public String getActive() { return this.active; }
-    public Employee setEmpID(String active) {
+    public Employee setEmpStatus(String active) {
         this.active = active;
         return this;
     }
