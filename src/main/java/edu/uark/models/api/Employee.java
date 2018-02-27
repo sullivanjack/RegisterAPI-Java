@@ -1,8 +1,5 @@
 package edu.uark.models.api;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
-
 import edu.uark.models.entities.EmployeeEntity;
 
 public class Employee {
@@ -68,28 +65,28 @@ public class Employee {
     public String getPassword() { return this.password; }
     public Employee setPassword(String password) {
         this.password = password;
-        return password;
+        return this;
     }
 
     public Employee() {
-        this.recordID = -1;
+        this.recordId = -1;
         this.firstName = "";
         this.lastName = "";
-        this.empID = -1;
-        this.active = false;
+        this.empId = -1;
+        this.active = "inactive";
         this.role = "";
         this.manager = "";
         this.password = "";
     }
 
     public Employee(EmployeeEntity employeeEntity) {
-        this.recordID = employeeEntity.getRecordId();
+        this.recordId = employeeEntity.getRecordId();
         this.firstName = employeeEntity.getFirstName();
         this.lastName = employeeEntity.getLastName();
-        this.empID = employeeEntity.getEmpId();
+        this.empId = employeeEntity.getEmpID();
         this.active = employeeEntity.getActive();
         this.role = employeeEntity.getRole();
-        this.manager = employeeEntity.getManage();
+        this.manager = employeeEntity.getManager();
         this.password = employeeEntity.getPassword();
     }
 }

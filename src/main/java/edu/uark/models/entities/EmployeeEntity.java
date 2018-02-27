@@ -26,8 +26,6 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
 
     @Override
     protected Map<String, Object> fillRecord(Map<String, Object> record) {
-        record.put(EmployeeFieldNames.LOOKUP_CODE, this.lookupCode);
-        record.put(EmployeeFieldNames.COUNT, this.count);
         record.put(EmployeeFieldNames.RECORD_ID, this.recordId);
         record.put(EmployeeFieldNames.FIRSTNAME, this.firstName);
         record.put(EmployeeFieldNames.LASTNAME, this.lastName);
@@ -145,11 +143,22 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     }
 
     public Employee synchronize(Employee apiEmployee) {
-        this.setCount(apiEmployee.getCount());
-        this.setLookupCode(apiEmployee.getLookupCode());
-
-        apiEmployee.setId(this.getId());
-        apiEmployee.setCreatedOn(this.getCreatedOn());
+    	
+    	// This could need to be added, I'm not sure
+    	// this.setCount(apiEmployee.);
+        // this.setLookupCode(apiEmployee.getLookupCode());
+        
+        this.setFirstName(apiEmployee.getFirstName());
+        this.setLastName(apiEmployee.getLastName());
+        this.setManager(apiEmployee.getManager());
+        this.setRecordId(apiEmployee.getRecordId());
+        this.setRole(apiEmployee.getRole());
+        this.setActive(apiEmployee.getActive());
+        this.setPassword(apiEmployee.getPassword());
+        
+        // Same thing here, could need this to be modified, not sure tho
+        // apiEmployee.setId(this.getId());
+        // apiEmployee.setCreatedOn(this.getCreatedOn());
 
         return apiEmployee;
     }
