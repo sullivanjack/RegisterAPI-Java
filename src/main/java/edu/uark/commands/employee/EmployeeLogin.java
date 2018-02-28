@@ -16,7 +16,7 @@ public class EmployeeLogin implements ResultCommandInterface<Employee> {
 			throw new UnprocessableEntityException("Employee is null");
 		}
 		
-		EmployeeEntity employeeEntity = this.employeeRepository.byRecordId(String.valueOf((emp.getRecordId())));
+		EmployeeEntity employeeEntity = this.employeeRepository.byRecordId(emp.getRecordId());
 		
 		if (employeeEntity == null) {
 			System.out.println("Employee Entity is null RIP");
