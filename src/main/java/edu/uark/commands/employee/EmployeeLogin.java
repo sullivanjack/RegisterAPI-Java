@@ -1,6 +1,7 @@
 package edu.uark.commands.employee;
 
 import edu.uark.commands.ResultCommandInterface;
+import edu.uark.controllers.exceptions.ConflictException;
 import edu.uark.controllers.exceptions.UnprocessableEntityException;
 import edu.uark.models.api.Employee;
 import edu.uark.models.entities.EmployeeEntity;
@@ -16,6 +17,13 @@ public class EmployeeLogin implements ResultCommandInterface<Employee> {
 		}
 		
 		EmployeeEntity employeeEntity = this.employeeRepository.byRecordId(String.valueOf((emp.getRecordId())));
+		
+		if (employeeEntity == null) {
+			System.out.println("Employee Entity is null RIP");
+			throw new ConflictException("Employee entity is null");
+			
+		}
+		
 		
 		if (employeeEntity.getEmpID() == emp.getEmpId() && employeeEntity.getPassword() == emp.getPassword()) {
 			return new Employee(employeeEntity);
@@ -40,7 +48,7 @@ public class EmployeeLogin implements ResultCommandInterface<Employee> {
 	
 	
 	private EmployeeRepositoryInterface employeeRepository;
-	public EmployeeRepositoryInterface getProductRepository() {
+	public EmployeeRepositoryInterface getEmployeeRepository() {
 		return this.employeeRepository;
 	}
 	public EmployeeLogin setProductRepository(EmployeeRepositoryInterface employeeRepository) {
