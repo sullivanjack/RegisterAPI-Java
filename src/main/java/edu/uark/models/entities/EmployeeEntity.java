@@ -14,10 +14,10 @@ import edu.uark.models.entities.fieldnames.EmployeeFieldNames;
 public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     @Override
     protected void fillFromRecord(ResultSet rs) throws SQLException {
-        this.recordId = rs.getInt(EmployeeFieldNames.RECORD_ID);
+        this.recordId = rs.getString(EmployeeFieldNames.RECORD_ID);
         this.firstName = rs.getString(EmployeeFieldNames.FIRSTNAME);
         this.lastName = rs.getString(EmployeeFieldNames.LASTNAME);
-        this.empID = rs.getInt(EmployeeFieldNames.EMP_ID);
+        this.empID = rs.getString(EmployeeFieldNames.EMP_ID);
         this.active = rs.getString(EmployeeFieldNames.ACTIVE);
         this.role = rs.getString(EmployeeFieldNames.ROLE);
         this.manager = rs.getString(EmployeeFieldNames.MANAGER);
@@ -38,11 +38,11 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
         return record;
     }
 
-    private int recordId;
-    public int getRecordId() {
+    private String recordId;
+    public String getRecordId() {
         return this.recordId;
     }
-    public EmployeeEntity setRecordId(int recordId) {
+    public EmployeeEntity setRecordId(String recordId) {
         if (this.recordId != recordId) {
             this.recordId = recordId;
             this.propertyChanged(EmployeeFieldNames.RECORD_ID);
@@ -77,11 +77,11 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
         return this;
     }
 
-    private int empID;
-    public int getEmpID() {
+    private String empID;
+    public String getEmpID() {
         return this.empID;
     }
-    public EmployeeEntity setCount(int empID) {
+    public EmployeeEntity setCount(String empID) {
         if (this.empID != empID) {
             this.empID = empID;
             this.propertyChanged(EmployeeFieldNames.EMP_ID);
@@ -166,10 +166,10 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     public EmployeeEntity() {
         super(DatabaseTable.EMPLOYEE);
 
-        this.recordId = -1;
+        this.recordId = "";
         this.firstName = StringUtils.EMPTY;
         this.lastName = StringUtils.EMPTY;
-        this.empID = -1;
+        this.empID = "";
         this.active = StringUtils.EMPTY;
         this.role = StringUtils.EMPTY;
         this.manager = StringUtils.EMPTY;

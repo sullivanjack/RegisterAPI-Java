@@ -13,7 +13,9 @@ import edu.uark.models.entities.fieldnames.EmployeeFieldNames;
 import edu.uark.models.repositories.interfaces.EmployeeRepositoryInterface;
 
 public class EmployeeRepository extends BaseRepository<EmployeeEntity> implements EmployeeRepositoryInterface {
-    @Override
+   
+	
+	@Override
     public EmployeeEntity byRecordId(String recordId) {
         return this.firstOrDefaultWhere(
                 new WhereContainer(
@@ -26,7 +28,9 @@ public class EmployeeRepository extends BaseRepository<EmployeeEntity> implement
                 (ps) -> {
                     try {
                         ps.setObject(1, recordId.toLowerCase());
-                    } catch (SQLException e) {}
+                    } catch (SQLException e) {
+                    	e.printStackTrace();
+                    }
 
                     return ps;
                 }

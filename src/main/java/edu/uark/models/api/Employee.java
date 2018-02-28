@@ -4,11 +4,11 @@ import edu.uark.models.entities.EmployeeEntity;
 
 public class Employee {
     /*record id may not be needed from database*/
-    private int recordId;
-    public int getRecordId() {
+    private String recordId;
+    public String getRecordId() {
         return this.recordId;
     }
-    public Employee setRecordId(int id) {
+    public Employee setRecordId(String id) {
         this.recordId = id;
         return this;
     }
@@ -31,11 +31,11 @@ public class Employee {
         return this;
     }
 
-    private int empId;
-    public int getEmpId() {
+    private String empId;
+    public String getEmpId() {
         return this.empId;
     }
-    public Employee setEmpId(int id) {
+    public Employee setEmpId(String id) {
         this.empId = id;
         return this;
     }
@@ -69,10 +69,10 @@ public class Employee {
     }
 
     public Employee() {
-        this.recordId = -1;
+        this.recordId = "";
         this.firstName = "";
         this.lastName = "";
-        this.empId = -1;
+        this.empId = "";
         this.active = "inactive";
         this.role = "";
         this.manager = "";

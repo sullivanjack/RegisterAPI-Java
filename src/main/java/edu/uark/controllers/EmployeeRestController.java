@@ -25,7 +25,7 @@ public class EmployeeRestController {
 	public String test() {
 		System.out.println("test homie g");
 		Employee e = new Employee();
-		e.setEmpId(1);
+		e.setEmpId("1000");
 		e.setPassword("dog");
 		
 		Employee k = (new EmployeeLogin()).setEmp(e).execute();
