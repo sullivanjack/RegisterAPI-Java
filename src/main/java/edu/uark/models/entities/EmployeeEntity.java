@@ -81,7 +81,7 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     public String getEmpID() {
         return this.empID;
     }
-    public EmployeeEntity setCount(String empID) {
+    public EmployeeEntity setEmpID(String empID) {
         if (this.empID != empID) {
             this.empID = empID;
             this.propertyChanged(EmployeeFieldNames.EMP_ID);
@@ -155,6 +155,7 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
         this.setRole(apiEmployee.getRole());
         this.setActive(apiEmployee.getActive());
         this.setPassword(apiEmployee.getPassword());
+        this.setEmpID(apiEmployee.getEmpId());
         
         // Same thing here, could need this to be modified, not sure tho
         // apiEmployee.setId(this.getId());
@@ -166,10 +167,10 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     public EmployeeEntity() {
         super(DatabaseTable.EMPLOYEE);
 
-        this.recordId = "";
+        this.recordId = StringUtils.EMPTY;
         this.firstName = StringUtils.EMPTY;
         this.lastName = StringUtils.EMPTY;
-        this.empID = "";
+        this.empID = StringUtils.EMPTY;
         this.active = StringUtils.EMPTY;
         this.role = StringUtils.EMPTY;
         this.manager = StringUtils.EMPTY;
