@@ -26,6 +26,14 @@ public class EmployeeRestController {
 		return (new EmployeesQuery()).execute();
 	}
 
+	//added by sean waters on 3/1/18 for login screen
+	/*@RequestMapping(value = "/byEmployeeCount/{employeeCount}", method = RequestMethod.GET)
+	public Employee getEmployeeCount(@PathVariable String employeeCount) {
+		return (new EmployeeCountQuery()).
+			setEmployeeCount(employeeCount).
+			execute();
+	}*/
+
 	@RequestMapping(value = "/byRecordId/{employeeResponseBody}", method = RequestMethod.GET)
 	public Employee employeeLoginCommand (@RequestBody Employee employeeResponseBody) {
 		return (new EmployeeLogin()).setEmp(employeeResponseBody).execute();
