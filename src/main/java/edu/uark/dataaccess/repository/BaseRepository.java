@@ -205,6 +205,7 @@ public abstract class BaseRepository<T extends BaseEntity<T>> implements BaseRep
 			}
 		} catch (SQLException e) {
 			System.err.printf("A SQLException occurred in first or default query. %s\n", e.getMessage());
+		    e.printStackTrace();
 		} catch (URISyntaxException e) {
 			System.err.printf("A URISyntaxException occurred in first or default query. %s\n", e.getMessage());
 		}
