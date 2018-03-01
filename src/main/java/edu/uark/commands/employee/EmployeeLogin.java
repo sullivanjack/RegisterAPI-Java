@@ -24,6 +24,9 @@ public class EmployeeLogin implements ResultCommandInterface<Employee> {
 			
 		}
 		
+		System.out.println(employeeEntity.getFirstName() + " " + employeeEntity.getEmpID() + " " + employeeEntity.getPassword());
+		System.out.println(emp.getFirstName() + " " + emp.getEmpId() + " " + emp.getPassword());
+				
 		
 		if (employeeEntity.getEmpID() == emp.getEmpId() && employeeEntity.getPassword() == emp.getPassword()) {
 			return new Employee(employeeEntity);
