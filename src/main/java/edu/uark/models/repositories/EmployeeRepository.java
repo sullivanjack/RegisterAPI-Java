@@ -20,7 +20,7 @@ public class EmployeeRepository extends BaseRepository<EmployeeEntity> implement
         return this.firstOrDefaultWhere(
                 new WhereContainer(
                         (new WhereClause()).
-                                postgreFunction(PostgreFunctionType.ANY).
+                            //    postgreFunction(PostgreFunctionType.LOWER).
                                 table(this.primaryTable).
                                 fieldName(EmployeeFieldNames.EMP_ID).
                                 comparison(SQLComparisonType.EQUALS)
