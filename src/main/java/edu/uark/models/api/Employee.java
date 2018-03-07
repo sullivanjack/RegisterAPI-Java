@@ -1,14 +1,17 @@
 package edu.uark.models.api;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import edu.uark.models.entities.EmployeeEntity;
 
 public class Employee {
     /*record id may not be needed from database*/
-    private String recordId;
-    public String getRecordId() {
+    private UUID recordId;
+    public UUID getRecordId() {
         return this.recordId;
     }
-    public Employee setRecordId(String id) {
+    public Employee setRecordId(UUID id) {
         this.recordId = id;
         return this;
     }
@@ -31,11 +34,11 @@ public class Employee {
         return this;
     }
 
-    private String empId;
-    public String getEmpId() {
+    private int empId;
+    public int getEmpId() {
         return this.empId;
     }
-    public Employee setEmpId(String id) {
+    public Employee setEmpId(int id) {
         this.empId = id;
         return this;
     }
@@ -67,12 +70,13 @@ public class Employee {
         this.password = password;
         return this;
     }
+    
 
     public Employee() {
-        this.recordId = "";
+        this.recordId = new UUID(0, 0);
         this.firstName = "";
         this.lastName = "";
-        this.empId = "";
+        this.empId = 0;
         this.active = "inactive";
         this.role = "";
         this.manager = "";
@@ -80,7 +84,7 @@ public class Employee {
     }
 
     public Employee(EmployeeEntity employeeEntity) {
-        this.recordId = employeeEntity.getRecordId();
+        this.recordId = employeeEntity.getId();
         this.firstName = employeeEntity.getFirstName();
         this.lastName = employeeEntity.getLastName();
         this.empId = employeeEntity.getEmpID();

@@ -16,18 +16,18 @@ public class EmployeeRepository extends BaseRepository<EmployeeEntity> implement
    
 	
 	@Override
-    public EmployeeEntity byRecordId(String recordId) {
+    public EmployeeEntity byEmployeeID(int id) {
         return this.firstOrDefaultWhere(
                 new WhereContainer(
                         (new WhereClause()).
                                 postgreFunction(PostgreFunctionType.LOWER).
                                 table(this.primaryTable).
-                                fieldName(EmployeeFieldNames.RECORD_ID).
+                                fieldName(EmployeeFieldNames.EMP_ID).
                                 comparison(SQLComparisonType.EQUALS)
                 ),
                 (ps) -> {
                     try {
-                        ps.setObject(1, recordId.toLowerCase());
+                        ps.setObject(1, id);
                     } catch (SQLException e) {
                     	e.printStackTrace();
                     }

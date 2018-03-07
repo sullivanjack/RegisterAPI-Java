@@ -3,6 +3,7 @@ package edu.uark.models.entities;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,10 +15,9 @@ import edu.uark.models.entities.fieldnames.EmployeeFieldNames;
 public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     @Override
     protected void fillFromRecord(ResultSet rs) throws SQLException {
-        this.recordId = rs.getString(EmployeeFieldNames.RECORD_ID);
         this.firstName = rs.getString(EmployeeFieldNames.FIRSTNAME);
         this.lastName = rs.getString(EmployeeFieldNames.LASTNAME);
-        this.empID = rs.getString(EmployeeFieldNames.EMP_ID);
+        this.empID = rs.getInt(EmployeeFieldNames.EMP_ID);
         this.active = rs.getString(EmployeeFieldNames.ACTIVE);
         this.role = rs.getString(EmployeeFieldNames.ROLE);
         this.manager = rs.getString(EmployeeFieldNames.MANAGER);
@@ -26,7 +26,6 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
 
     @Override
     protected Map<String, Object> fillRecord(Map<String, Object> record) {
-        record.put(EmployeeFieldNames.RECORD_ID, this.recordId);
         record.put(EmployeeFieldNames.FIRSTNAME, this.firstName);
         record.put(EmployeeFieldNames.LASTNAME, this.lastName);
         record.put(EmployeeFieldNames.EMP_ID, this.empID);
@@ -38,11 +37,13 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
         return record;
     }
 
-    private String recordId;
-    public String getRecordId() {
+    /* Not needed. 
+    private UUID recordId;
+    public UUID getRecordId() {
         return this.recordId;
     }
-    public EmployeeEntity setRecordId(String recordId) {
+    
+    public EmployeeEntity setRecordId(UUID recordId) {
         if (this.recordId != recordId) {
             this.recordId = recordId;
             this.propertyChanged(EmployeeFieldNames.RECORD_ID);
@@ -50,7 +51,9 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
 
         return this;
     }
-
+    */
+    
+    
     private String firstName;
     public String getFirstName() {
         return this.firstName;
@@ -77,11 +80,11 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
         return this;
     }
 
-    private String empID;
-    public String getEmpID() {
+    private int empID;
+    public int getEmpID() {
         return this.empID;
     }
-    public EmployeeEntity setEmpID(String empID) {
+    public EmployeeEntity setEmpID(int empID) {
         if (this.empID != empID) {
             this.empID = empID;
             this.propertyChanged(EmployeeFieldNames.EMP_ID);
@@ -147,19 +150,17 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     	// This could need to be added, I'm not sure
     	// this.setCount(apiEmployee.);
         // this.setLookupCode(apiEmployee.getLookupCode());
-        
         this.setFirstName(apiEmployee.getFirstName());
         this.setLastName(apiEmployee.getLastName());
-        this.setManager(apiEmployee.getManager());
-        this.setRecordId(apiEmployee.getRecordId());
+        this.setManager(apiEmployee.getManager());      
         this.setRole(apiEmployee.getRole());
         this.setActive(apiEmployee.getActive());
         this.setPassword(apiEmployee.getPassword());
         this.setEmpID(apiEmployee.getEmpId());
         
         // Same thing here, could need this to be modified, not sure tho
-        // apiEmployee.setId(this.getId());
-        // apiEmployee.setCreatedOn(this.getCreatedOn());
+        apiEmployee.setRecordId(this.getId());
+        //apiEmployee.setCreatedOn(this.getCreatedOn()); -- TODO PROBABLY ADD THIS
 
         return apiEmployee;
     }
@@ -167,10 +168,9 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
     public EmployeeEntity() {
         super(DatabaseTable.EMPLOYEE);
 
-        this.recordId = StringUtils.EMPTY;
         this.firstName = StringUtils.EMPTY;
         this.lastName = StringUtils.EMPTY;
-        this.empID = StringUtils.EMPTY;
+        this.empID = 0;
         this.active = StringUtils.EMPTY;
         this.role = StringUtils.EMPTY;
         this.manager = StringUtils.EMPTY;
@@ -179,8 +179,6 @@ public class EmployeeEntity extends BaseEntity<EmployeeEntity> {
 
     public EmployeeEntity(Employee apiEmployee) {
         super(DatabaseTable.EMPLOYEE);
-
-        this.recordId = apiEmployee.getRecordId();
         this.firstName = apiEmployee.getFirstName();
         this.lastName = apiEmployee.getLastName();
         this.empID = apiEmployee.getEmpId();

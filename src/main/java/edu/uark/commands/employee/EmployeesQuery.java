@@ -13,7 +13,7 @@ import edu.uark.models.repositories.interfaces.EmployeeRepositoryInterface;
 public class EmployeesQuery implements ResultCommandInterface<List<Employee>> {
 	@Override
 	public List<Employee> execute() {
-		return this.productRepository.
+		return this.employeeRepository.
 			all().
 			stream().
 			map(mp -> (new Employee(mp))).

@@ -1,6 +1,6 @@
 package edu.uark.controllers;
 
-import java.util.Lists;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.uark.commands.employee.EmployeeLogin;
-import edu.uark.commands.products.ProductByLookupCodeQuery;
-import edu.uark.models.api.Employee;
-import edu.uark.models.api.Product;
-
 import edu.uark.commands.employee.EmployeesQuery;
+import edu.uark.models.api.Employee;
 
 @RestController
 @RequestMapping(value = "/api/employee")
@@ -44,8 +41,7 @@ public class EmployeeRestController {
 	public String test() {
 		System.out.println("test homie g");
 		Employee e = new Employee();
-		e.setRecordId("recordid1");
-		e.setEmpId("1000");
+		e.setEmpId(100);
 		e.setPassword("dog");
 		
 		Employee k = (new EmployeeLogin()).setEmp(e).execute();
